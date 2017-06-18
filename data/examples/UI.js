@@ -1,4 +1,4 @@
-// game ui box gittest
+// game ui box 
 function gameUI() {
 	term.putString("┎━━━━━━━━━━━━━━━┒",0 ,0 , 255, 255, 255); 
 	for (i = 1; i < (windowHeight-1); i++){
