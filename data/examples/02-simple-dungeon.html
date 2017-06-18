@@ -14,6 +14,55 @@
 	<script src="renderer-switcher.js"></script>
 	<script src="store.js"></script>
 	
+	<!--The JS files below are used-->
+	
+	<script src="jquery-2.1.4.js"></script>
+	<script src="game.js"></script>
+	<script src="UI.js"></script>
+	<script src="menu.js"></script>
+	<script src="fov.js"></script>
+	<script src="worldgen.js"></script>
+	
+	
+	
+	
+	
+</head>
+
+<body onload="initSimpleDungeon(); createRendererSwitcher();">
+
+	<p class="centerer">Move around with arrow keys.</p>
+
+	<div class="centerer">
+		<div id="game" onmouseover="mousein(event)" onmouseout="mouseout()")>Enable JavaScript and reload the page.</div>
+	</div>
+
+	<div class="centerer" id="renderer-switcher">
+		<!-- Populated by renderer-switcher.js -->
+	</div>
+	<div id="demo"></div>
+
+
+
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Title</title>
+	<link href="../unicodetiles/unicodetiles.css" rel="stylesheet" type="text/css" />
+	<link href="../docs/style.css" rel="stylesheet" type="text/css" />
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<script src="../unicodetiles/unicodetiles.js"></script>
+	<script src="../unicodetiles/ut.WebGLRenderer.js"></script>
+	<script src="../unicodetiles/ut.CanvasRenderer.js"></script>
+	<script src="../unicodetiles/ut.DOMRenderer.js"></script>
+	<script src="../unicodetiles/input.js"></script>
+	<script src="renderer-switcher.js"></script>
+	<script src="store.js"></script>
+	
 	<!--
 		Check the JS file below for the actual source code!
 	-->
