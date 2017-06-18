@@ -1,0 +1,12 @@
+===Basic Structure===
+
+ - One island
+ - Basic map
+ - Procedural generation
+ - NPCs
+ - Dialogue
+ - UI + inventory + magic + sack + character
+ - Story + boss
+ - combat + stats + levelling
+ - Village
+ - Side quest
