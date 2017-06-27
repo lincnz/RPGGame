@@ -1,0 +1,3 @@
+var inventory = [AXE, SWORD];
+
+

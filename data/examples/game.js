@@ -22,7 +22,7 @@ function tick2(oldx, oldy) {
 	//updateMouse(); //mouseover
 	
 	gameUI(); //UI
-	gameNotifications(); //notifications
+
 	gameInteractions(); //interactions
 }
 

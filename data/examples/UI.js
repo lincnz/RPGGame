@@ -10,11 +10,16 @@ function gameUI() {
 	term.putString("───────────────",1 ,3 , 255, 255, 255);
 	
 	displayInventory();
+	gameNotifications(); //notifications
+	gameHotkeys();//hotkeys - join under "UI" 
+	gameShowLoc();
 }
 
 //displayInventory
 function displayInventory() {
+	
 	if (ui.inventory === true){
+		//box
 		term.putString("┌────────────────────────────────┐",18 ,0 , 255, 255, 255); 
 		for (i = 0; i < 10; i++){
 			term.putString("|                                |",18 ,1+i , 255, 255, 255);
@@ -22,8 +27,17 @@ function displayInventory() {
 		term.putString("└────────────────────────────────┘",18 ,10 , 255, 255, 255);
 		term.putString("INVENTORY",19 ,0 , 255, 255, 255);
 		
-		drawBox(10, 10, 20, 20);
+		drawBox(34, 11, 18, 11);
+		
+		//items
+		term.put(inventory[0].tile, 19, 1);
+		term.putString("----", 20, 1, 255, 255, 255);
+		term.putString(inventory[0].name, 25, 1, 255, 255, 255)
+		term.put(inventory[01].tile, 19, 2);
+		term.putString("----", 20, 2, 255, 255, 255);
+		term.putString(inventory[1].name, 25, 2, 255, 255, 255)
 	}
+	
 	
 	
 }
@@ -34,7 +48,7 @@ function drawBox (width, height, locx, locy) {
 	var midString = ["|"]
 	var bottomString = ["└"]
 	
-	for (i = 0; i < (width-1); i++){
+	for (i = 0; i < (width-2); i++){
 		topString.push("─");
 		midString.push(" ");
 		bottomString.push("─");
@@ -55,6 +69,19 @@ function drawBox (width, height, locx, locy) {
 function gameNotifications() {
 	term.putString(notifications.thisnot, 1 ,1 , 255, 255, 255)
 	term.putString(notifications.prevnot, 1 ,2 , 255, 255, 255);
+}
+
+//prints hotkeys
+function gameHotkeys() {
+	term.putString("I", 1 ,4 , 255, 255, 255)
+	term.putString("nventory", 2 ,4 , 100, 100, 100);
+}
+
+function gameShowLoc() {
+	//term.putString("X - ", 1 ,5 , 255, 255, 255)
+	term.putString(pl.x, 6 ,5 , 100, 100, 100);
+	//term.putString("Y - ", 1 ,6 , 255, 255, 255)
+	term.putString(pl.y, 6 ,6 , 100, 100, 100);
 }
 
 //notifies and logs interactions

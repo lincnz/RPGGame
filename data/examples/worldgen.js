@@ -1,36 +1,11 @@
 //height and width of map
-var mapWidth = 71;
+//var mapWidth = 71;
+var mapWidth = 50;
+//var mapHeight = 24;
 var mapHeight = 24;
+var mapX = 25;
+var mapY = 3
 var worldMap = [];
-
-// The tile palette is precomputed in order to not have to create
-// thousands of Tiles on the fly.	
-
-//Terrain tiles
-var AT = {name: "player", tile: new ut.Tile("@", 255, 255, 255)}
-var GRASS = {name: "grass", tile: new ut.Tile(".", 80, 150, 80), walkable: true};
-var GRASS2 = {name: "grass", tile: new ut.Tile(".", 90, 250, 90), walkable: true};
-var GRASS3 = {name: "grass", tile: new ut.Tile(',', 0, 102, 0), walkable: true};
-var TREE = {name: "tree", tile: new ut.Tile("☘", 20, 100, 20), walkable: false, obtainable: false, talkable: true};
-var ROCK = {name: "rock", tile: new ut.Tile("☁", 100, 100, 100), walkable: false, obtainable: false};
-var SAND = {name: "sand", tile: new ut.Tile(".", 255, 255, 0), walkable: true};
-var BROWNTREE = {name: "tree", tile: new ut.Tile("☘", 102, 51, 0), walkable: false};
-var OCEAN = {name: "seawater", tile: new ut.Tile(".", 0, 0, 255, 0, 0, 35), walkable: true};
-
-//NPC tiles
-var SERPENT = {name: "serpent", tile: new ut.Tile("ζ", 80, 150, 80), fightable: true};
-
-//Item tiles
-var AXE = {name: "axe", tile: new ut.Tile("Ͳ", 100, 100, 20), obtainable: true};
-
-//Map tile
-var MAPOCEAN = new ut.Tile("≈", 0, 0, 255, 0, 0, 35);
-var MAPDEEPOCEAN = new ut.Tile("≈", 0, 0, 155, 0, 0, 45);
-var MAPFOREST = new ut.Tile("♠", 80, 150, 80, 20, 35, 20);
-var MAPHILL = new ut.Tile("☁", 100, 100, 100);
-var MAPDESERT = new ut.Tile("˷", 200, 200, 0, 35, 35, 0);
-var MAPMOUNTAIN = new ut.Tile("◭", 255, 255, 255, 0, 0, 0);
-
 
 
 //adds mapHeight number of arrays to worldMap array (y-axis)
@@ -56,9 +31,13 @@ function landDecide() {
 	}
 }
 
+
+
 function generateOcean(){
-	for (x = 6; x <= 5+mapWidth; x++) {
-		for (y = 3; y <= 2+mapHeight; y++) {
+	for (x = mapX; x <= mapX+mapWidth-1; x++) {
+		for (y = mapY; y <= mapY+mapHeight-1; y++) {
+			
+			//replace with ocean shaping
 			if(Math.random() > 0.8){term.put(MAPDEEPOCEAN, x, y);}
 			else {term.put(MAPOCEAN, x, y);}
 		}
@@ -88,7 +67,7 @@ function checkAdjacentOcean(x, y){
 function generateContinents(){
 	var continent = 0;
 
-	for(i = 0; i <= 2; i++){
+	for(i = 0; i <= 0; i++){
 		for (x = (9 + 24*continent); x <= (25 + 24*continent); x++) {
 			for (y = 6; y <= 23; y++) 
 				//PUT A FUNCTION
@@ -133,6 +112,18 @@ function generateContinents(){
 	
 }
 
+function generateIsland(){
+
+	for(i = 0; i <= 0; i++){
+		for (x = (mapX + 3); x <= mapX + mapWidth - 4; x++) {
+			for (y = (mapY + 3); y <= mapY + mapHeight - 4; y++) 
+				//PUT A FUNCTION
+				landDecide(x, y);
+		}
+			
+	}
+}
+
 //possible border code
 function generateRegions() {
 	var bor1y = 12;
@@ -162,7 +153,8 @@ function mapGen(k) {
 	generateOcean();
 	
 	//land generation
-	generateContinents();
+	generateIsland();
+	//generateContinents();
 
 	//islands
 	//height
@@ -267,6 +259,7 @@ function getChunk(x, y) {
 					else if (worldtile === MAPHILL) {return getHill(x, y);}
 					else if (worldtile === MAPOCEAN) {return getOcean(x, y);}
 					else if (worldtile === MAPDEEPOCEAN) {return getOcean(x, y);}
+					//else if (worldtile === ut.NULLTILE) {}
 					else {return getForest(x, y);}
 					
 			}

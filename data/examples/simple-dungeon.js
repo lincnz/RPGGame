@@ -1,6 +1,6 @@
 /*global ut */
 var term, eng; // Can't be initialized yet because DOM is not ready
-var pl = { x: 300, y: 300 }; // Player position
+var pl = { x: 2900, y: 700 }; // Player position
 var updateFOV;
 
 var windowHeight = 30;
@@ -34,14 +34,6 @@ function tick2() {
 	//term.render(); // Render
 }
 
-// game ui box
-function gameUI() {
-	term.putString("┎━━━━━━━━━━━━━━━┒",0 ,0 , 255, 255, 255); 
-	for (i = 1; i < (windowHeight-1); i++){
-		term.putString("|               |",0 ,i , 255, 255, 255);
-	}
-	term.putString("┖━━━━━━━━━━━━━━━┚",0 ,29 , 255, 255, 255);
-}
 
 
 // Key press handler - movement & collision handling
@@ -55,8 +47,9 @@ function onKeyDown(k) {
 	var oldx = pl.x, oldy = pl.y;
 	pl.x += movedir.x;
 	pl.y += movedir.y;
-	//this needs to be changed for walkable tiles
-	if (eng.tileFunc(pl.x, pl.y).getChar() !== '.' && eng.tileFunc(pl.x, pl.y).getChar() !== ',') { pl.x = oldx; pl.y = oldy; }
+	
+	//collision handling
+	if (eng.tileFunc(pl.x, pl.y).get.walkable !== true && eng.tileFunc(pl.x, pl.y).get.walkable !== true) { pl.x = oldx; pl.y = oldy; }
 	tick2();
 }
 
